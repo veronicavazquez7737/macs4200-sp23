@@ -34,3 +34,19 @@ def text_clean( text, LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'):
             cleaned_text += character.upper()
     
     return cleaned_text 
+
+
+
+def multiplicative_inverse(e, n):
+    def egcd(a, b):
+        if a == 0:
+            return (b, 0, 1)
+        else:
+            g, y, x = egcd(b % a, a)
+            return (g, x - (b // a) * y, y)
+    
+    g, x, y = egcd(e, n)
+    if g != 1:
+        return False
+    else:
+        return x % n
